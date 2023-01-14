@@ -7,6 +7,10 @@ function App() {
   const [rtt, setRtt] = useState("");
   const [downlink, setDownlink] = useState("");
   const [count, setCount] = useState(0);
+  const [min, setMin] = useState(Infinity);
+  const [max, setMax] = useState(-Infinity);
+  const [curr, setCurr] = useState(0);
+
   const [sum, setSum] = useState(0);
 
   const loop = () => {
@@ -21,7 +25,14 @@ function App() {
     fetchData();
     const y = performance.now();
     const delta = y - x;
-    // console.log(`${count}: ${y} - ${x} = ${delta}`);
+
+    if (delta < min) {
+      setMin(delta);
+    } else if (delta > max) {
+      setMax(delta);
+    }
+
+    setCurr(delta);
 
     setSum((prevSum) => prevSum + delta);
     setCount((prevCount) => prevCount + 1);
@@ -43,6 +54,7 @@ function App() {
       <h1>
         [{count}] Average: {sum / count}
       </h1>
+      <h1>Curr: {curr}</h1>
     </div>
   );
 }
