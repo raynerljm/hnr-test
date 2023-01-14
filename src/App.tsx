@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
+import { onTTFB } from "web-vitals";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,17 @@ function App() {
   };
 
   loop();
+
+  useEffect(() => {
+    // const fetchData = async () => {
+    //   const res = await fetch(
+    //     "https://opensheet.elk.sh/1irSfdHrKOHhs-5xaNjVvJKCJHjf-wsQIz9F_NWlOios/1"
+    //   );
+    //   const data = await res.json();
+    //   console.log("Data Successfully Fetched");
+    // };
+    onTTFB(console.log);
+  }, []);
 
   return (
     <div className="App">
