@@ -29,7 +29,15 @@ function App() {
     //   const data = await res.json();
     //   console.log("Data Successfully Fetched");
     // };
-    onTTFB(console.log);
+    // onTTFB(console.log);
+
+    onTTFB((metric) => {
+      // Calculate the request time by subtracting from TTFB
+      // everything that happened prior to the request starting.
+      const requestTime =
+        metric.value - (metric.entries[0] as any).requestStart;
+      console.log("Request time:", requestTime);
+    });
   }, []);
 
   return (
