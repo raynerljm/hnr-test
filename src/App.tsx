@@ -9,7 +9,7 @@ function App() {
 
   const loop = () => {
     setTimeout(() => {
-      const x = window.navigator.connection;
+      const x = (window.navigator as any).connection;
       setCount(count + 1);
       setRtt(x.rtt);
       setDownlink(x.downlink);
