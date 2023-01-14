@@ -13,12 +13,14 @@ function App() {
   // const [sum, setSum] = useState(0);
   const [rtt, setRtt] = useState("");
   const [downlink, setDownlink] = useState("");
+  const [count, setCount] = useState(0);
 
   const loop = () => {
     // var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     const connection = (navigator as any).connection;
     setRtt(connection.rtt);
     setDownlink(connection.downlink);
+    setCount((count) => count + 1);
 
     // const fetchData = async () => {
     //   const res = await fetch(
@@ -63,6 +65,7 @@ function App() {
       <h1>Curr: {curr}</h1> */}
       <h1>RTT: {rtt}</h1>
       <h1>Downlink: {downlink}</h1>
+      <h1>Fetches: {count}</h1>
     </div>
   );
 }
